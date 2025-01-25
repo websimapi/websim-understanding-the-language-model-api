@@ -157,28 +157,25 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .html-form label {
   font-weight: bold;
   color: var(--primary-color);
-  margin-bottom: 0.5rem;
-  display: block;
 }
 
-.result-frame {
+.html-form textarea {
   width: 100%;
   min-height: 200px;
-  border: none;
-  background: var(--code-background);
+  padding: 1rem;
+  border: 1px solid #ddd;
   border-radius: var(--border-radius);
-  padding: var(--spacing);
-  color: white;
   font-family: monospace;
+  font-size: 14px;
 }
 
-.submit-btn {
+.html-form button {
   background-color: var(--secondary-color);
   color: white;
   border: none;
@@ -186,45 +183,21 @@ textarea {
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 1rem;
+  align-self: flex-start;
 }
 
-.submit-btn:hover {
+.html-form button:hover {
   background-color: var(--primary-color);
 }
 
-.demo-container + .demo-container {
-  margin-top: 2rem;
-}
-
-.pure-html-example {
-  background: var(--card-background);
-  padding: var(--spacing);
-  border-radius: var(--border-radius);
-  margin: var(--spacing) 0;
-}
-
-ol li {
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-code {
-  background: var(--code-background);
-  color: #fff;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
-
-iframe {
+.response-frame {
   width: 100%;
   min-height: 200px;
   border: 1px solid #ddd;
   border-radius: var(--border-radius);
-  margin-top: var(--spacing);
-  padding: var(--spacing);
-  background: white;
+  background: var(--code-background);
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -234,5 +207,13 @@ iframe {
   
   pre {
     font-size: 14px;
+  }
+  
+  .html-form textarea {
+    min-height: 150px;
+  }
+  
+  .response-frame {
+    min-height: 150px;
   }
 }

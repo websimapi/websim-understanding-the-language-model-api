@@ -150,109 +150,73 @@ async function getChatResponse(messages) {
       </div>
     </section>
 
-    <section id="pure-html">
-      <h2>Pure HTML Implementation</h2>
-      <p>Here's the simplest possible way to use the LLM API with just HTML - no JavaScript required:</p>
-      
-      <div class="code-example">
-        <h3>Complete HTML Example</h3>
-        <pre><code class="language-html">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Simple LLM Demo&lt;/title&gt;
-  &lt;style&gt;
-    form { max-width: 500px; margin: 20px auto; }
-    textarea { width: 100%; min-height: 100px; margin: 10px 0; }
-    iframe { width: 100%; min-height: 200px; border: 1px solid #ccc; }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;form action="/api/ai_completion" method="POST" target="responseFrame"&gt;
-    &lt;div&gt;
-      &lt;label for="prompt"&gt;Enter your prompt:&lt;/label&gt;
-      &lt;textarea name="prompt" id="prompt" required&gt;Generate a creative story about...&lt;/textarea&gt;
-    &lt;/div&gt;
-    
-    &lt;div&gt;
-      &lt;label for="data"&gt;Context (optional):&lt;/label&gt;
-      &lt;textarea name="data" id="data"&gt;&lt;/textarea&gt;
-    &lt;/div&gt;
-    
-    &lt;button type="submit"&gt;Get AI Response&lt;/button&gt;
-  &lt;/form&gt;
-
-  &lt;iframe name="responseFrame" title="AI Response"&gt;&lt;/iframe&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-      </div>
-
+    <section id="html-only">
+      <h2>HTML-Only Example</h2>
       <div class="feature-card">
-        <h3>How it works:</h3>
-        <ol>
-          <li>The form's <code>action</code> points to the LLM API endpoint</li>
-          <li>The <code>method="POST"</code> ensures proper API submission</li>
-          <li>The form targets an iframe named "responseFrame" using <code>target="responseFrame"</code></li>
-          <li>When submitted, the API response automatically displays in the iframe</li>
-          <li>The response includes proper JSON formatting for readability</li>
-        </ol>
-        <p><strong>Note:</strong> This is the simplest possible implementation. For production use, consider adding error handling and response formatting with JavaScript.</p>
-      </div>
+        <h3>Using HTML Form Action</h3>
+        <p>Here's how to make AI requests using pure HTML without any JavaScript:</p>
+        <pre><code class="language-html">
+&lt;form action="/api/ai_completion" method="POST" target="response-frame"&gt;
+  &lt;label for="prompt"&gt;Prompt:&lt;/label&gt;
+  &lt;textarea name="prompt" required&gt;
+Generate a haiku about nature.
 
-      <div class="demo-container">
-        <h3>Try it yourself:</h3>
-        <form action="/api/ai_completion" method="POST" target="demoFrame" class="html-form">
-          <textarea name="prompt" required>Generate a creative story about...</textarea>
-          <textarea name="data" placeholder="Optional context..."></textarea>
-          <button type="submit" class="submit-btn">Get AI Response</button>
-        </form>
-        <iframe name="demoFrame" class="result-frame" title="AI Response"></iframe>
+&lt;typescript-interface&gt;
+interface Response {
+  haiku: string;
+  season: string;
+}
+&lt;/typescript-interface&gt;
+
+&lt;example&gt;
+{
+  "haiku": "Morning dew sparkles,\nGentle breeze stirs maple leaves,\nAutumn day begins",
+  "season": "autumn"
+}
+&lt;/example&gt;
+  &lt;/textarea&gt;
+  
+  &lt;label for="data"&gt;Context Data (optional):&lt;/label&gt;
+  &lt;textarea name="data"&gt;&lt;/textarea&gt;
+  
+  &lt;button type="submit"&gt;Generate Haiku&lt;/button&gt;
+&lt;/form&gt;
+&lt;iframe name="response-frame" title="Response"&gt;&lt;/iframe&gt;</code></pre>
+
+        <div class="demo-container">
+          <h4>Live Demo:</h4>
+          <form action="/api/ai_completion" method="POST" target="response-frame" class="html-form">
+            <div class="input-section">
+              <label for="prompt">Prompt:</label>
+              <textarea name="prompt" required>Generate a haiku about nature.
+
+<typescript-interface>
+interface Response {
+  haiku: string;
+  season: string;
+}
+</typescript-interface>
+
+<example>
+{
+  "haiku": "Morning dew sparkles,\nGentle breeze stirs maple leaves,\nAutumn day begins",
+  "season": "autumn"
+}
+</example></textarea>
+              
+              <label for="data">Context Data (optional):</label>
+              <textarea name="data"></textarea>
+              
+              <button type="submit">Generate Haiku</button>
+            </div>
+          </form>
+          <iframe name="response-frame" title="Response" class="response-frame"></iframe>
+        </div>
       </div>
     </section>
 
     <section id="interactive-demo">
       <h2>Interactive Demo</h2>
-      
-      <div class="demo-container">
-        <h3>Pure HTML Form Example</h3>
-        <p>Here's how to make an API call using just HTML, without any JavaScript:</p>
-        <form action="/api/ai_completion" method="POST" target="resultFrame" class="html-form">
-          <div class="input-section">
-            <label for="prompt">Prompt:</label>
-            <textarea name="prompt" id="prompt" required>Generate a creative story about...</textarea>
-            
-            <label for="data">Context Data (optional):</label>
-            <textarea name="data" id="data"></textarea>
-            
-            <button type="submit" class="submit-btn">Send Request</button>
-          </div>
-        </form>
-        <div class="output-section">
-          <h3>Response:</h3>
-          <iframe name="resultFrame" id="resultFrame" class="result-frame"></iframe>
-        </div>
-      </div>
-
-      <div class="code-example">
-        <h3>HTML-Only Implementation</h3>
-        <pre><code class="language-html">
-&lt;form action="/api/ai_completion" method="POST" target="resultFrame"&gt;
-  &lt;textarea name="prompt" required&gt;
-    Generate a creative story about...
-  &lt;/textarea&gt;
-  
-  &lt;textarea name="data"&gt;
-    Optional context data here...
-  &lt;/textarea&gt;
-  
-  &lt;button type="submit"&gt;Send Request&lt;/button&gt;
-&lt;/form&gt;
-
-&lt;iframe name="resultFrame"&gt;&lt;/iframe&gt;</code></pre>
-      </div>
-
-      <h3>JavaScript Demo</h3>
       <div class="demo-container">
         <div class="input-section">
           <textarea id="promptInput" placeholder="Enter your prompt here..."></textarea>
