@@ -1,0 +1,170 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM API Documentation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="main.js" type="module"></script>
+</head>
+<body>
+  <header>
+    <h1>Understanding the Language Model API</h1>
+    <p class="subtitle">A comprehensive guide to integrating AI capabilities in your applications</p>
+  </header>
+
+  <main>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>The Language Model API provides a powerful way to integrate AI capabilities into your applications. This guide covers everything you need to know about making API calls, formatting requests, and handling responses.</p>
+    </section>
+
+    <section id="basics">
+      <h2>Basic Usage</h2>
+      <div class="code-example">
+        <h3>Simple API Call</h3>
+        <pre><code class="language-javascript" id="basicExample">
+async function getAIResponse() {
+  try {
+    const response = await fetch('/api/ai_completion', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt: 'Generate a creative story about a space explorer.',
+        data: 'Additional context or history can go here'
+      })
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}</code></pre>
+        <button class="try-it" data-example="basic">Try it!</button>
+        <div class="result" id="basicResult"></div>
+      </div>
+    </section>
+
+    <section id="advanced">
+      <h2>Advanced Features</h2>
+      
+      <div class="feature-card">
+        <h3>Structured Responses</h3>
+        <p>Define TypeScript interfaces to get structured responses:</p>
+        <pre><code class="language-typescript" id="structuredExample">
+interface StoryResponse {
+  title: string;
+  content: string;
+  tags: string[];
+}
+
+async function getStructuredStory() {
+  const response = await fetch('/api/ai_completion', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      prompt: `Generate a short story with tags.
+      
+      interface Response {
+        title: string;
+        content: string;
+        tags: string[];
+      }
+      
+      {
+        "title": "The Red Door",
+        "content": "A mysterious door appeared...",
+        "tags": ["mystery", "supernatural", "short"]
+      }
+      `,
+      data: ''
+    })
+  });
+  return await response.json();
+}</code></pre>
+        <button class="try-it" data-example="structured">Try it!</button>
+        <div class="result" id="structuredResult"></div>
+      </div>
+
+      <div class="feature-card">
+        <h3>Chat Conversations</h3>
+        <p>Handle back-and-forth conversations:</p>
+        <pre><code class="language-javascript" id="chatExample">
+async function getChatResponse(messages) {
+  const response = await fetch('/api/ai_completion', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      prompt: `Respond as a helpful assistant.
+      
+      interface Response {
+        message: string;
+        sentiment: "positive" | "neutral" | "negative";
+      }
+      
+      {
+        "message": "I'd be happy to help you with that!",
+        "sentiment": "positive"
+      }
+      `,
+      data: messages
+    })
+  });
+  return await response.json();
+}</code></pre>
+        <button class="try-it" data-example="chat">Try it!</button>
+        <div class="result" id="chatResult"></div>
+      </div>
+    </section>
+
+    <section id="best-practices">
+      <h2>Best Practices</h2>
+      <div class="practices-grid">
+        <div class="practice-card">
+          <h3>Clear Prompts</h3>
+          <p>Write clear, specific prompts with examples of desired output format.</p>
+        </div>
+        <div class="practice-card">
+          <h3>Error Handling</h3>
+          <p>Always implement proper error handling for API calls.</p>
+        </div>
+        <div class="practice-card">
+          <h3>Type Safety</h3>
+          <p>Use TypeScript interfaces to ensure response format consistency.</p>
+        </div>
+        <div class="practice-card">
+          <h3>Context Management</h3>
+          <p>Properly manage conversation history and context in the data field.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="interactive-demo">
+      <h2>Interactive Demo</h2>
+      <div class="demo-container">
+        <div class="input-section">
+          <textarea id="promptInput" placeholder="Enter your prompt here..."></textarea>
+          <textarea id="dataInput" placeholder="Enter additional context/data here (optional)..."></textarea>
+          <button id="sendRequest">Send Request</button>
+        </div>
+        <div class="output-section">
+          <h3>Response:</h3>
+          <pre id="responseOutput"></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
