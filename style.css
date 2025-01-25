@@ -197,6 +197,36 @@ textarea {
   margin-top: 2rem;
 }
 
+.pure-html-example {
+  background: var(--card-background);
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
+  margin: var(--spacing) 0;
+}
+
+ol li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+code {
+  background: var(--code-background);
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+iframe {
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  margin-top: var(--spacing);
+  padding: var(--spacing);
+  background: white;
+}
+
 @media (max-width: 768px) {
   .practices-grid {
     grid-template-columns: 1fr;

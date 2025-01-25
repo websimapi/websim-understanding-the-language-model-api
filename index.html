@@ -150,6 +150,67 @@ async function getChatResponse(messages) {
       </div>
     </section>
 
+    <section id="pure-html">
+      <h2>Pure HTML Implementation</h2>
+      <p>Here's the simplest possible way to use the LLM API with just HTML - no JavaScript required:</p>
+      
+      <div class="code-example">
+        <h3>Complete HTML Example</h3>
+        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Simple LLM Demo&lt;/title&gt;
+  &lt;style&gt;
+    form { max-width: 500px; margin: 20px auto; }
+    textarea { width: 100%; min-height: 100px; margin: 10px 0; }
+    iframe { width: 100%; min-height: 200px; border: 1px solid #ccc; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form action="/api/ai_completion" method="POST" target="responseFrame"&gt;
+    &lt;div&gt;
+      &lt;label for="prompt"&gt;Enter your prompt:&lt;/label&gt;
+      &lt;textarea name="prompt" id="prompt" required&gt;Generate a creative story about...&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+      &lt;label for="data"&gt;Context (optional):&lt;/label&gt;
+      &lt;textarea name="data" id="data"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Get AI Response&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;iframe name="responseFrame" title="AI Response"&gt;&lt;/iframe&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <div class="feature-card">
+        <h3>How it works:</h3>
+        <ol>
+          <li>The form's <code>action</code> points to the LLM API endpoint</li>
+          <li>The <code>method="POST"</code> ensures proper API submission</li>
+          <li>The form targets an iframe named "responseFrame" using <code>target="responseFrame"</code></li>
+          <li>When submitted, the API response automatically displays in the iframe</li>
+          <li>The response includes proper JSON formatting for readability</li>
+        </ol>
+        <p><strong>Note:</strong> This is the simplest possible implementation. For production use, consider adding error handling and response formatting with JavaScript.</p>
+      </div>
+
+      <div class="demo-container">
+        <h3>Try it yourself:</h3>
+        <form action="/api/ai_completion" method="POST" target="demoFrame" class="html-form">
+          <textarea name="prompt" required>Generate a creative story about...</textarea>
+          <textarea name="data" placeholder="Optional context..."></textarea>
+          <button type="submit" class="submit-btn">Get AI Response</button>
+        </form>
+        <iframe name="demoFrame" class="result-frame" title="AI Response"></iframe>
+      </div>
+    </section>
+
     <section id="interactive-demo">
       <h2>Interactive Demo</h2>
       
