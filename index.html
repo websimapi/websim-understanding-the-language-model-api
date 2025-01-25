@@ -152,6 +152,46 @@ async function getChatResponse(messages) {
 
     <section id="interactive-demo">
       <h2>Interactive Demo</h2>
+      
+      <div class="demo-container">
+        <h3>Pure HTML Form Example</h3>
+        <p>Here's how to make an API call using just HTML, without any JavaScript:</p>
+        <form action="/api/ai_completion" method="POST" target="resultFrame" class="html-form">
+          <div class="input-section">
+            <label for="prompt">Prompt:</label>
+            <textarea name="prompt" id="prompt" required>Generate a creative story about...</textarea>
+            
+            <label for="data">Context Data (optional):</label>
+            <textarea name="data" id="data"></textarea>
+            
+            <button type="submit" class="submit-btn">Send Request</button>
+          </div>
+        </form>
+        <div class="output-section">
+          <h3>Response:</h3>
+          <iframe name="resultFrame" id="resultFrame" class="result-frame"></iframe>
+        </div>
+      </div>
+
+      <div class="code-example">
+        <h3>HTML-Only Implementation</h3>
+        <pre><code class="language-html">
+&lt;form action="/api/ai_completion" method="POST" target="resultFrame"&gt;
+  &lt;textarea name="prompt" required&gt;
+    Generate a creative story about...
+  &lt;/textarea&gt;
+  
+  &lt;textarea name="data"&gt;
+    Optional context data here...
+  &lt;/textarea&gt;
+  
+  &lt;button type="submit"&gt;Send Request&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;iframe name="resultFrame"&gt;&lt;/iframe&gt;</code></pre>
+      </div>
+
+      <h3>JavaScript Demo</h3>
       <div class="demo-container">
         <div class="input-section">
           <textarea id="promptInput" placeholder="Enter your prompt here..."></textarea>

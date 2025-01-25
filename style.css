@@ -153,6 +153,50 @@ textarea {
   font-family: monospace;
 }
 
+.html-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.html-form label {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.result-frame {
+  width: 100%;
+  min-height: 200px;
+  border: none;
+  background: var(--code-background);
+  border-radius: var(--border-radius);
+  padding: var(--spacing);
+  color: white;
+  font-family: monospace;
+}
+
+.submit-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.demo-container + .demo-container {
+  margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
   .practices-grid {
     grid-template-columns: 1fr;
